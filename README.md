@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Deployment
+
+The app can be previewed here:
+https://star-wars-api-consumer.vercel.app/
+<br/>
+<br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

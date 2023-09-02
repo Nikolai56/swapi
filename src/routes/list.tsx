@@ -3,12 +3,7 @@ import { useOutletContext } from 'react-router-dom'
 import PeopleList from 'components/PeopleList/PeopleList'
 import { People } from 'types'
 
-/*export const PeopleLoader = async () => {
-  const response = await fetch('https://swapi.dev/api/people')
-  return await response.json() as People
-}*/
-
-function Root() {
+function List() {
   const people = useOutletContext() as People
   return (
     <div className="App">
@@ -18,4 +13,4 @@ function Root() {
   )
 }
 
-export default Root
+export default List

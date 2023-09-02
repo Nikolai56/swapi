@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
 
 // import { People } from 'types'
 
@@ -24,8 +25,10 @@ function Root() {
   }, [])
   return (
     <div className="App">
-      Layout: <br/><br/>
-      <Outlet context={people}/>
+      <Container>
+        Layout: <br/><br/>
+        <Outlet context={people}/>
+      </Container>
     </div>
   )
 }

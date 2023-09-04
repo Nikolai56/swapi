@@ -18,7 +18,7 @@ interface Props {
 }
 
 const PeopleList: React.FC<Props> = ({ isLoading, people }) => {
-  if (people?.detail === 'Not found' || !people?.count) return <div>Nothing found</div>
+  if (people?.detail === 'Not found' || people?.count === 0) return <div>Nothing found</div>
   if (!people?.results || isLoading) return (
     <Spinner animation="border" role="status">
       <span className="visually-hidden">Loading...</span>

@@ -25,4 +25,5 @@ export type Person = {
   created: Timestamp
   edited: Timestamp
   url: Url
+  [key: string]: string | Url[]
 }

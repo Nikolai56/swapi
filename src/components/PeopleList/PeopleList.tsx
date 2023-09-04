@@ -1,4 +1,5 @@
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 import PeopleCard from 'components/PeopleCard/PeopleCard'
 import classes from './PeopleList.module.scss'
 // types
@@ -14,13 +15,14 @@ interface Props {
 }
 
 const PeopleList: React.FC<Props> = ({ people }) => {
-  console.log('people', people)
   if (!people) return null
   return (
     <div className={classes.container}>
-      {people.results.map(person => (
-        <PeopleCard key={person.name} person={person} />
-      ))}
+      <Row>
+        {people.results.map(person => (
+          <PeopleCard key={person.name} person={person} />
+        ))}
+      </Row>
     </div>
   )
 }

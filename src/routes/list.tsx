@@ -40,7 +40,7 @@ function List() {
 
   return (
     <>
-      <Form onSubmit={e => {e.preventDefault()}}>
+      <Form onSubmit={e => {e.preventDefault()}} className="mt-3">
         <Form.Group className="mb-3" controlId="controlInput1">
           <Form.Label>Search by keywords:</Form.Label>
           <Form.Control
@@ -51,7 +51,6 @@ function List() {
           />
         </Form.Group>
       </Form>
-      <br />
       <PeopleList people={people} />
       <Pagination
         count={people?.count}

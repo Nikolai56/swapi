@@ -67,7 +67,7 @@ const PeopleDetails: React.FC<Props> = ({ person }) => {
             <Card className="mb-2" bg="light">
               <Card.Body>
                 <Card.Title>{pState.name}</Card.Title>
-                {FieldSet.map(field => (
+                {FieldSet.slice(1).map(field => (
                   <Card.Text key={field}>{field}: {pState[field]}</Card.Text>
                 ))}
               </Card.Body>

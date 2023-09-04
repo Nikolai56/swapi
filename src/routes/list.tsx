@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Pagination from 'components/Pagination/Pagination'
 import PeopleList from 'components/PeopleList/PeopleList'
@@ -9,14 +9,24 @@ function List() {
   const [people, setPeople] = useState<People | null>(null)
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState<string>('')
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const debouncedSearch = useDebounce(search, 1000)
+  const prevSearch = useRef(debouncedSearch)
 
   useEffect(() => {
+    setPage(1)
+  }, [debouncedSearch])
+
+  useEffect(() => {
+    if(prevSearch.current !== debouncedSearch && page !== 1) {
+      return
+    }
     const abortController = new AbortController()
     const { signal } = abortController
 
     const fetchData = async (path: string) => {
       try {
+        setIsLoading(true)
         const request = await fetch(path, {
           signal: signal,
           method: 'GET',
@@ -31,7 +41,11 @@ function List() {
     }
 
     fetchData(`https://swapi.dev/api/people?page=${page}&search=${debouncedSearch}`)
-      .then()
+      .then(() => {
+        setIsLoading(false)
+      })
+
+    prevSearch.current = debouncedSearch
 
     return () => {
       abortController.abort()
@@ -51,7 +65,7 @@ function List() {
           />
         </Form.Group>
       </Form>
-      <PeopleList people={people} />
+      <PeopleList people={people} isLoading={isLoading} />
       <Pagination
         count={people?.count}
         page={page}

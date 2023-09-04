@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import Root from './routes/root'
 import List from './routes/list'
+import ErrorPage from './error-page'
 import Details , { PersonLoader } from './routes/details'
 import reportWebVitals from './reportWebVitals'
 
@@ -15,13 +16,19 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <List /> },
       {
-        path: 'people/:id',
-        element: <Details />,
-        loader: PersonLoader,
-      },
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <List /> },
+          {
+            path: 'people/:id',
+            element: <Details />,
+            loader: PersonLoader,
+          },
+        ]
+      }
     ],
   }
 ])
@@ -30,9 +37,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
 root.render(
-  // <React.StrictMode>
-  <RouterProvider router={router} />
-  // </React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function

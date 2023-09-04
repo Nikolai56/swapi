@@ -59,7 +59,7 @@ function List() {
           <Form.Label>Search by keywords:</Form.Label>
           <Form.Control
             type="text"
-            placeholder="anakin"
+            placeholder="Enter keywords"
             value={search}
             onChange={e => setSearch(e.target.value)}
           />

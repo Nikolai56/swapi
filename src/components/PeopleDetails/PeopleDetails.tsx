@@ -31,6 +31,9 @@ interface Props {
 const PeopleDetails: React.FC<Props> = ({ person }) => {
   const [pState, setPersonState] = useState<Person>(person)
   const [mode, setMode] = useState<ViewState>(ViewState.Read)
+  if (person?.detail === 'Not found') return (
+    <div className={classes.container}>Such page does not exist</div>
+  )
   if (!person) return null
 
   const handleModeChange = () => {

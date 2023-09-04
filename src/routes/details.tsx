@@ -23,10 +23,10 @@ function Details() {
   // fetchData()
   // }, [])
   return (
-    <div className="App">
+    <>
       <Link to="/">Back Home</Link>
       {person.name}
-    </div>
+    </>
   )
 }
 

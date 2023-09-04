@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 
@@ -10,24 +10,23 @@ import Container from 'react-bootstrap/Container'
 }*/
 
 function Root() {
-  const [people, setPeople] = useState(null)
+
   // const people = useLoaderData() as People
   // console.log(people)
-  useEffect(() => {
-    const fetchData = async () => {
-      const url = 'https://swapi.dev/api/people'
-      const response = await fetch(url)
-      const data = await response.json()
-      setPeople(data)
-    }
-
-    fetchData().then()
-  }, [])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const url = 'https://swapi.dev/api/people'
+  //     const response = await fetch(url)
+  //     const data = await response.json()
+  //     setPeople(data)
+  //   }
+  //
+  //   fetchData().then()
+  // }, [])
   return (
     <div className="App">
       <Container>
-        Layout: <br/><br/>
-        <Outlet context={people}/>
+        <Outlet/>
       </Container>
     </div>
   )
